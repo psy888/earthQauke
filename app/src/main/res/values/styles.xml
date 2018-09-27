@@ -22,4 +22,10 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="list_item_Style">
+        <item name="android:textSize">@dimen/p</item>
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:paddingTop">@dimen/top_padding</item>
+        <item name="android:paddingBottom">@dimen/top_padding</item>
+    </style>
 </resources>
