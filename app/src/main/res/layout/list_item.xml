@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:gravity="center_vertical"
     android:padding="@dimen/top_padding">
 
     <TextView
@@ -13,20 +14,35 @@
         android:layout_height="wrap_content"
         tools:text="3.6" />
 
-    <TextView
-        android:id="@+id/location"
+    <LinearLayout
         style="@style/list_item_Style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="2"
-        tools:text="San Francisco" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/distance"
+            style="@style/subText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="211KM s OF" />
+
+        <TextView
+            android:id="@+id/location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            tools:text="San Francisco" />
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/date"
-        style="@style/list_item_Style"
+        style="@style/subText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="right"
-        tools:text="Feb 2,2016" />
+        tools:text="Feb 2,2016\n22:16" />
 </LinearLayout>
