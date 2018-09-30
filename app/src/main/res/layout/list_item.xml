@@ -10,13 +10,14 @@
     <TextView
         android:id="@+id/mag"
         style="@style/list_item_Style"
-        android:layout_width="65dp"
+        android:layout_width="0dp"
+        android:layout_weight="1"
         android:layout_height="wrap_content"
         tools:text="3.6" />
 
     <LinearLayout
         style="@style/list_item_Style"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="vertical">
@@ -32,17 +33,29 @@
             android:id="@+id/location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/list_item_Style"
             android:textColor="@color/textColor"
             tools:text="San Francisco" />
     </LinearLayout>
 
-
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:orientation="vertical">
     <TextView
         android:id="@+id/date"
         style="@style/subText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:gravity="right"
-        tools:text="Feb 2,2016\n22:16" />
+        tools:text="Feb 2,2016" />
+
+        <TextView
+            android:id="@+id/time"
+            style="@style/subText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="22:16" />
+    </LinearLayout>
 </LinearLayout>

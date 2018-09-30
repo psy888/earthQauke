@@ -1,11 +1,9 @@
 package com.example.android.quakereport;
 
-import java.text.DecimalFormat;
-
 public class Earthquake {
-    double mMag;
-    String mLoc;
-    long mDate;
+    private double mMag;
+    private String mLoc;
+    private long mDate;
 
     public Earthquake(double mag, String loc, long date) {
         mMag = mag;
@@ -13,9 +11,8 @@ public class Earthquake {
         mDate = date;
     }
 
-    public String getMag() {
-        DecimalFormat df1 = new DecimalFormat(".#");
-        return df1.format(mMag);
+    public double getMag() {
+        return mMag;
     }
 
     public String getLoc() {
