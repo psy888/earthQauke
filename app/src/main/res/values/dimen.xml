@@ -3,5 +3,6 @@
     <dimen name="p">16sp</dimen>
     <dimen name="sub_text">12sp</dimen>
     <dimen name="std_padding">8dp</dimen>
+    <dimen name="double_padding">16dp</dimen>
     <dimen name="top_padding">4dp</dimen>
 </resources>

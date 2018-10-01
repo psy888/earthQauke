@@ -5,7 +5,7 @@ public class Earthquake {
     private String mLoc;
     private long mDate;
 
-    public Earthquake(double mag, String loc, long date) {
+    public Earthquake(Double mag, String loc, long date) {
         mMag = mag;
         mLoc = loc;
         mDate = date;
