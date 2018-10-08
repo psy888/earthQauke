@@ -24,7 +24,7 @@
     <color name="colorAccent">#10CAC9</color>
 
     <color name="textColor">#3e3e3e</color>
-    <color name="subText">#838383</color>
+    <color name="subText">#4e4e4e</color>
     <color name="mag_text">#FFFFFF</color>
 
     <!-- Magnitude circle colors-->

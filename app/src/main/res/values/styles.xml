@@ -30,6 +30,7 @@
 
     <style name="subText">
         <item name="android:textSize">@dimen/sub_text</item>
+        <item name="android:textColor">@color/subText</item>
 
     </style>
 </resources>
