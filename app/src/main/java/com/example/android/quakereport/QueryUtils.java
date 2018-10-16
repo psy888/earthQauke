@@ -22,7 +22,7 @@ import java.util.List;
  * Helper methods related to requesting and receiving earthquake data from USGS.
  */
 public final class QueryUtils {
-    static final String LOG_TAG = QueryUtils.class.getSimpleName();
+    static final String LOG_TAG = "\n\n"+ QueryUtils.class.getSimpleName();
     /**
      * Returns new URL object from the given string URL.
      * */
@@ -82,6 +82,7 @@ public final class QueryUtils {
                 inputStream.close();
             }
         }
+        Log.d(LOG_TAG, "Make httpRequest method\n\n");
         return jsonResponse;
     }
 
@@ -172,6 +173,7 @@ public final class QueryUtils {
         //Extract relevant fields from the JSON response and create a list of {@link Earthquake}s
         List<Earthquake> earthquakes = extractFeatureFromJson(jsonResponse);
 
+        Log.d(LOG_TAG, "FetchEarthquakeData method \n\n");
         //Return the list of  {@link Earthquake}s
         return earthquakes;
     }
