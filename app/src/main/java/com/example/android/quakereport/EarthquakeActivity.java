@@ -25,6 +25,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +42,8 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     /**Tag for log messages*/
     public static final String LOG_TAG = "\n\n"+EarthquakeActivity.class.getName();
     String MAIN_URL = "https://earthquake.usgs.gov/fdsnws/event/1/query?format=geojson&eventtype=earthquake&orderby=time&limit=40";
-
+    TextView emptyView;
+    ProgressBar progress;
     /**
      * Adapter for the list of earthquakes
      */
@@ -59,6 +62,13 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
+
+        //Find reference to progress bar
+        progress = (ProgressBar) findViewById(R.id.progress);
+
+        //Set empty View if there no data in listview
+        emptyView = (TextView) findViewById(R.id.emptyView);
+        earthquakeListView.setEmptyView(emptyView);
 
         // Create a new adapter that takes an empty list of earthquakes as input
         mAdapter = new EarthquakeAdapter(this, new ArrayList<Earthquake>());
@@ -96,6 +106,11 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     @Override
     public void onLoadFinished(Loader<List<Earthquake>> loader, List<Earthquake> data) {
         Log.d(LOG_TAG,"onFinishCallback\n\n");
+        //hide progress bar
+        progress.setVisibility(View.GONE);
+
+        //Set text to empty view if there are no data to show
+        emptyView.setText(R.string.no_data);
         // Clear the adapter of previous earthquake data
         mAdapter.clear();
 
