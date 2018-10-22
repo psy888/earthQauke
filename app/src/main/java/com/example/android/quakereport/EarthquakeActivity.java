@@ -16,8 +16,11 @@
 package com.example.android.quakereport;
 
 import android.app.LoaderManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -53,12 +56,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.earthquake_activity);
 
-        //Start loading (id,bundle,LoaderManager.LoaderCallbacks<D>)
-        // Initialize the loader. Pass in the int ID constant defined above and pass in null for
-        // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
-        // because this activity implements the LoaderCallbacks interface).
-        getLoaderManager().initLoader(EARTHQUAKE_LOADER_ID,null,this);
-        Log.d(LOG_TAG, "initLoader \n\n");
+
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
@@ -69,6 +67,27 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
         //Set empty View if there no data in listview
         emptyView = (TextView) findViewById(R.id.emptyView);
         earthquakeListView.setEmptyView(emptyView);
+
+        //Get connection info
+        ConnectivityManager connectivityManager = (ConnectivityManager) getApplicationContext().getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connectivityManager.getActiveNetworkInfo();
+        //if no internet connection show message "no connection"
+        boolean isConnected = (networkInfo == null)?false:networkInfo.isConnectedOrConnecting();
+        if(!isConnected)
+        {
+            progress.setVisibility(View.GONE);
+            emptyView.setText(R.string.noConnection);
+        }
+        else
+        {
+
+            //Start loading (id,bundle,LoaderManager.LoaderCallbacks<D>)
+            // Initialize the loader. Pass in the int ID constant defined above and pass in null for
+            // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
+            // because this activity implements the LoaderCallbacks interface).
+            getLoaderManager().initLoader(EARTHQUAKE_LOADER_ID,null,this);
+            Log.d(LOG_TAG, "initLoader \n\n");
+        }
 
         // Create a new adapter that takes an empty list of earthquakes as input
         mAdapter = new EarthquakeAdapter(this, new ArrayList<Earthquake>());
@@ -100,6 +119,7 @@ public class EarthquakeActivity extends AppCompatActivity implements LoaderManag
     @Override
     public Loader<List<Earthquake>> onCreateLoader(int id, Bundle args) {
         Log.d(LOG_TAG,"onCreateCallback\n\n");
+
         return new EarthquakeLoader(this, MAIN_URL);
     }
 
