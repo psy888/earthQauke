@@ -167,6 +167,7 @@ public final class QueryUtils {
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
+            Log.e("BOOK ADAPTER", "LOAD IMAGE FROM INTERNET ------------------");
         } catch (IOException e) {
             Log.e(LOG_TAG, "Problem making the HTTP request.", e);
         }
